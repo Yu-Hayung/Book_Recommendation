@@ -13,7 +13,7 @@ Category_list = [
 
 for i in range(50):
    num += 1
-   url = f"http://www.yes24.com/24/Category/Display/001001026002?PageNumber={num}"
+   url = f"http://www.yes24.com/24/Category/Display/001001047010?PageNumber={num}"
 
    # 웹 서버에 요청하기
    res = requests.get(url)
@@ -47,6 +47,7 @@ for i in range(50):
          Author_list.append(Author_content[i].text.strip())
          introduction_list.append(introduction[i].text.strip())
          str_url = str(add_insert[i].find_all('a')[1]['href'])
+
          if str_url.startswith('/Product/Goods'):
             url_list.append(f'http://www.yes24.com{str_url}')
 
@@ -63,7 +64,7 @@ for i in range(50):
             summery_list.append(str_summery_re)
             try:
                try:
-                  keyword = find_keyword(str_summery_re, n_gram_range=(3, 3))[1]
+                  keyword = find_keyword(str_summery_re, n_gram_range=(3, 7))[1]
                   print('keyword >>', keyword)
                   keyword_list.append(list(keyword))
                except:
@@ -72,7 +73,7 @@ for i in range(50):
                   keyword_list.append(list(keyword))
             except:
                print('keyword ERR')
-               keyword_list.append([''])
+               keyword_list.append(['없음'])
 
       except Exception as e:
          print('PASSS > ', e)
