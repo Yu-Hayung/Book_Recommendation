@@ -3,7 +3,7 @@ from find_keyword import *
 from math import *
 
 
-txt = "어른이 되면 무엇이든 다 될 줄 알았다"
+txt = "회사에서 문서 작성 또는 이메일 보고서 어떦게 써야 할까?"
 
 keyword_list = find_keyword(txt, n_gram_range=(2, 2))[1]
 book_df = pd.read_csv('book_txt.csv')
@@ -19,7 +19,9 @@ for i in keyword_list:
     word_list = str(i).split(' ')
     for j in word_list:
         words.append(j)
+
 words = list(set(words))
+words = word_remove(words) # 지정단어 삭제
 
 join_words = '|'.join(words)     # .str.contains 여러개 담기위한 '|' 처리
 
@@ -48,7 +50,7 @@ if len(Recommendation_df_fin) >= 1:
         Recommended_txt_similarity = jaccard_similarity(words, word_list2)
 
 
-        if Recommended_txt_similarity > 0.0:
+        if Recommended_txt_similarity > 1.6:
             num += 1
             print(
             f'==== {num} ============================================ \n'
@@ -62,13 +64,13 @@ if len(Recommendation_df_fin) >= 1:
             f'유사도 : {str(Recommended_txt_similarity)}'
             )
 
-        # csv 저장하기
-        f = open('data_save.csv', 'a', newline='', encoding='utf8')
-        wr = csv.writer(f)
-        wr.writerow([str(txt), words,
-                     str(Recom_book_data["title_list"]), str(Recom_book_data["summery_list"]),
-                     str(Recom_book_data["keyword_list"]), str(Recommended_txt_similarity)])
-        f.close()
+            # csv 저장하기
+            f = open('data_save.csv', 'a', newline='', encoding='utf8')
+            wr = csv.writer(f)
+            wr.writerow([str(txt), words,
+                         str(Recom_book_data["title_list"]), str(Recom_book_data["summery_list"]),
+                         str(Recom_book_data["keyword_list"]), str(Recommended_txt_similarity)])
+            f.close()
 
 
 else:

@@ -69,3 +69,22 @@ def jaccard_similarity(x, y):
 def find_kr(str):
     re_str = re.compile('[가-힣]+').findall(str)
     return re_str
+
+def word_remove(words):
+    if '방법' in words:
+        words.remove('방법')
+    if '무엇' in words:
+        words.remove('무엇')
+    if '대중' in words:
+        words.remove('대중')
+    if '사람' in words:
+        words.remove('사람')
+    if '공부' in words:
+        words.remove('공부')
+    if '유행' in words:
+        words.remove('유행')
+    if '문제' in words:
+        words.remove('문제')
+
+
+    return words
