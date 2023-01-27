@@ -17,7 +17,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\book_txt2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data_save.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_save2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\prossesing\data_save.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
